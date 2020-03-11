@@ -1,0 +1,14 @@
+function xdot=func(t,x)
+%xdot(1) x accleration
+w=2000*2*pi/60*3.5*10^-4;%spinrate
+v=sqrt(x(1)^2+x(2)^2+x(3)^2);
+rv=0.0039+0.0058/(1+exp((v-35)/5));
+g=9.8;
+theta=-15*pi/180;
+xdot(1)=-rv*x(1)*sqrt(x(1)^2+x(2)^2+x(3)^2)+w*(x(3)*sin(theta)-x(2)*cos(theta));
+xdot(2)=-rv*x(2)*sqrt(x(1)^2+x(2)^2+x(3)^2)+w*(x(1)*cos(theta));
+xdot(3)=-rv*x(3)*sqrt(x(1)^2+x(2)^2+x(3)^2)-w*(x(1)*sin(theta))-g;
+xdot(4)=x(1);
+xdot(5)=x(2);
+xdot(6)=x(3);
+xdot=xdot';
